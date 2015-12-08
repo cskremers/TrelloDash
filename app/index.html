@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<head>
+    <h1>TrelloDash</h1>
+
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<div ng-app="trelloDash" ng-controller="getListsCtrl">
+
+    <ul>
+        <li ng-repeat="list in lists">
+
+            <p><b>List id:</b> {{ list.id }} </p>
+            <p><b>List name:</b> {{list.name}} </p>
+
+        <ul>
+            <li ng-repeat="card in list.cards">
+                <p><b>Card:</b> {{card.name}} </p>
+            </li>
+        </ul>
+
+
+        </li>
+    </ul>
+
+</div>
+
+<script>
+    var app = angular.module('trelloDash', []);
+    app.controller('getListsCtrl', function($scope, $http) {
+        $http.get("https://api.trello.com/1/boards/5661eee788d372c4b73ccbac/lists?cards=open&card_fields=name&fields=name&key=b9b668433355c35cca0cc4cafd2efaff&token=68202c20ab1055f38b4e1cf5509f226901e9f9bca2b41673160cb7640824dd3a")
+                .then(function(response)
+                {
+                    $scope.lists = response.data;
+                });
+    });
+
+    app.controller('getCardsCtrl', function($scope, $http)
+    {
+        $http.get("https://api.trello.com/1/lists/5661eeef4ea8cf3b244fe04f/cards?key=b9b668433355c35cca0cc4cafd2efaff&token=68202c20ab1055f38b4e1cf5509f226901e9f9bca2b41673160cb7640824dd3a")
+                .then(function(response)
+                {
+                    $scope.cards = response.data;
+                });
+    });
+</script>
+
+</body>
+</html> 
