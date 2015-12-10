@@ -24,3 +24,5 @@ app.controller('getCardsCtrl', function($scope, $http)
             $scope.cardsOnList = response.data;
         });
 });
+
+

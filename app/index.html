@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en-US" ng-app="trelloDash">
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="js/controllers.js"></script>
+<script src="js/services.js"></script>
 <script src="js/services.js"></script>
 
 <head>
@@ -13,7 +14,7 @@
 </head>
 <body>
 
-<div ng-app="trelloDash" ng-controller="getListsCtrl">
+<div ng-controller="getListsCtrl" style="border: solid">
     <ul>
         <li ng-repeat="list in lists">
 
@@ -30,7 +31,7 @@
 </div>
 
 
-<div ng-app="trelloDash" ng-controller="getCardsCtrl">
+<div ng-controller="getCardsCtrl" style="border: solid">
     <ul>
         <li ng-repeat="card in cardsOnList">
 
@@ -48,6 +49,7 @@
         </li>
     </ul>
 </div>
+
 
 
 </body>
