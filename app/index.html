@@ -3,7 +3,7 @@
 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 <script src="js/controllers.js"></script>
 <script src="js/services.js"></script>
-<script src="js/services.js"></script>
+<script src="js/app.js"></script>
 
 <head>
     <h1>TrelloDash</h1>
@@ -13,6 +13,9 @@
 
 </head>
 <body>
+
+
+
 
 <div ng-controller="getListsCtrl" style="border: solid">
     <ul>
@@ -36,14 +39,19 @@
         <li ng-repeat="card in cardsOnList">
 
             <p><h4>{{card.name}}</h4></p>
-            <p><b>Last Active Date:</b> {{ card.dateLastActivity }} </p>
-            <button><b>Card Link:</b> {{card.url}} </button>
+            <p><b>Last Active Date:</b>{{ card.dateLastActivity }}</p>
+            <button ng-click="openTab(card.url)"><b>Card Link:</b> View in Trello </button>
 
             <ul>
                 <li ng-repeat="label in card.labels">
-                    <p><b>Labels:</b> {{label.name}} </p>
+                    <span ng-class="label.color"><b>Status: {{label.name}}</b></span>
+
                 </li>
             </ul>
+
+            <body>
+                Description: {{card.desc}}
+            </body>
         </li>
     </ul>
 </div>

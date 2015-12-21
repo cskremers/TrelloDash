@@ -2,6 +2,10 @@
 
 /* App Module */
 
+function openTab(urlToOpen)
+{
+    $scope.openTrello(urlToOpen);
 
 
 
+}
