@@ -5,7 +5,7 @@
 function openTab(urlToOpen)
 {
     $scope.openTrello(urlToOpen);
-
-
-
 }
+
+
+

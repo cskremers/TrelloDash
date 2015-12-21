@@ -17,45 +17,71 @@
 
 
 
-<div ng-controller="getListsCtrl" style="border: solid">
-    <ul>
-        <li ng-repeat="list in lists">
+<!--<div ng-controller="getListsCtrl" style="border: solid">-->
+    <!--<ul>-->
+        <!--<li ng-repeat="list in lists">-->
 
-            <p><b>List id:</b> {{ list.id }} </p>
-            <p><b>List name:</b> {{list.name}} </p>
+            <!--<p><b>List id:</b> {{ list.id }} </p>-->
+            <!--<p><b>List name:</b> {{list.name}} </p>-->
 
-        <ul>
-            <li ng-repeat="card in list.cards">
-                <p><b>Card:</b> {{card.name}} </p>
-            </li>
-        </ul>
-        </li>
-    </ul>
-</div>
+        <!--<ul>-->
+            <!--<li ng-repeat="card in list.cards">-->
+                <!--<p><b>Card:</b> {{card.name}} </p>-->
+            <!--</li>-->
+        <!--</ul>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</div>-->
+
+
+<!--<div ng-controller="getCardsCtrl" style="border: solid">-->
+    <!--<ul>-->
+        <!--<li ng-repeat="card in cardsOnList">-->
+
+            <!--<p><h4>{{card.name}}</h4></p>-->
+            <!--<p><b>Last Active Date:</b>{{ card.dateLastActivity }}</p>-->
+            <!--<button ng-click="openTab(card.url)"><b>Card Link:</b> View in Trello </button>-->
+
+            <!--<ul>-->
+                <!--<li ng-repeat="label in card.labels">-->
+                    <!--<span ng-class="label.color"><b>Status: {{label.name}}</b></span>-->
+
+                <!--</li>-->
+            <!--</ul>-->
+
+            <!--<body>-->
+                <!--Description: {{card.desc}}-->
+            <!--</body>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</div>-->
+
+
 
 
 <div ng-controller="getCardsCtrl" style="border: solid">
-    <ul>
-        <li ng-repeat="card in cardsOnList">
+    <table style="border-collapse: collapse; border-spacing: 100px">
+        <tr ng-repeat="card in cardsOnList" style="border-bottom: solid">
+            <td style=""><button ng-click="openTab(card.url)"><b>{{card.name}}</b></button>
 
-            <p><h4>{{card.name}}</h4></p>
-            <p><b>Last Active Date:</b>{{ card.dateLastActivity }}</p>
-            <button ng-click="openTab(card.url)"><b>Card Link:</b> View in Trello </button>
-
-            <ul>
+            <td>
                 <li ng-repeat="label in card.labels">
-                    <span ng-class="label.color"><b>Status: {{label.name}}</b></span>
-
+                <span ng-class="label.color"><b>Status: {{label.name}}</b></span>
                 </li>
-            </ul>
+            </td>
 
-            <body>
+            <td><b>Last Active Date:</b>{{ card.dateLastActivity }}</td>
+
+            <td>
+            Description: {{card.desc}}
+            </td>
+
+            <td>
                 Description: {{card.desc}}
-            </body>
-        </li>
-    </ul>
+            </td>
+        </tr>
+    </table>
 </div>
-
 
 
 </body>
