@@ -18,12 +18,30 @@ var apiBase = "https://api.trello.com/1/";
 var listId1 = "5661eeef4ea8cf3b244fe04f";
 var boardID1 = "5661eee788d372c4b73ccbac";
 
+// LIVE BOARDS
+var bugQuestionsBoardID = "563a91b8c85812ec32318be9";
+var underReviewList = "563a928d70756b864838263c";
+var bugsInQuestionList = "563a9280ad191357483fd760";
+var lowROIList = "5661aee687f85527a0fa0849";
+var blockedList = "563a93b548e33efc014c815c";
+
+var devPriotities = "563b656f2df96b8d91b881a6";
+var rawThoughtsList = "563b6585b9f4e838fef2a995";
+var detailPrioritiesList = "563b73572770b040d0949555";
+var highPrioritiesList = "563b6593a3cc1552fe65f7bb";
+var doneList = "563b659789366c7c8c5cb2b4";
+
+//each of the list id's
+var listIDs = ["563a928d70756b864838263c", "563a9280ad191357483fd760", "5661aee687f85527a0fa0849", "563a93b548e33efc014c815c"];
+//
+
 // =============================================================================
 // URL Builder Strings
 // =============================================================================
 
-var cardsOnListUrlBuilder = apiBase.concat("lists/", listId1, "/cards?key=", key, "&token=", token);
-var boardsURLBuilder = apiBase.concat("boards/", boardID1, "/lists?cards=open&card_fields=name&fields=name&key=", key, "&token=", token);
+
+
+var boardsURLBuilder = apiBase.concat("boards/", bugQuestionsBoardID, "/lists?cards=open&card_fields=name&fields=name&key=", key, "&token=", token);
 
 
 // =============================================================================
@@ -39,13 +57,19 @@ app.controller('getListsCtrl', function($scope, $http) {
 });
 
 
-app.controller('getCardsCtrl', function($scope, $http)
+app.controller('getCardsOnList', function($scope, $http)
 {
-    $http.get(cardsOnListUrlBuilder)
-        .then(function(response)
-        {
-            $scope.cardsOnList = response.data;
-        });
+    $scope.init = function(listID)
+    {
+        var urlStringBuilder = apiBase.concat("lists/", listID, "/cards?key=", key, "&token=", token);
+
+        $http.get(urlStringBuilder)
+            .then(function(response)
+            {
+                $scope.cards = response.data;
+            })
+    };
+
 });
 
 

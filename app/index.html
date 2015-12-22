@@ -34,53 +34,32 @@
 <!--</div>-->
 
 
-<!--<div ng-controller="getCardsCtrl" style="border: solid">-->
-    <!--<ul>-->
-        <!--<li ng-repeat="card in cardsOnList">-->
+<div ng-controller="getListsCtrl">
+    <li ng-repeat="list in lists track by list.name">
+    <h3>{{list.name}}</h3>
 
-            <!--<p><h4>{{card.name}}</h4></p>-->
-            <!--<p><b>Last Active Date:</b>{{ card.dateLastActivity }}</p>-->
-            <!--<button ng-click="openTab(card.url)"><b>Card Link:</b> View in Trello </button>-->
+        <div ng-controller="getCardsOnList" ng-init="init(list.id)" style="border: solid">
+            <table style="border-collapse: collapse; border-spacing: 100px">
+                <tr ng-repeat="card in cards" style="border-bottom: solid">
+                    <td style=""><button ng-click="openTab(card.url)"><b>{{card.name}}</b></button>
 
-            <!--<ul>-->
-                <!--<li ng-repeat="label in card.labels">-->
-                    <!--<span ng-class="label.color"><b>Status: {{label.name}}</b></span>-->
+                    <td style="width: 20% ">
+                        <li ng-repeat="label in card.labels">
+                            <span ng-class="label.color"><b>{{label.name}}</b></span>
+                        </li>
+                    </td>
 
-                <!--</li>-->
-            <!--</ul>-->
+                    <td style="width: 20%"><b>Last Active Date:</b>{{ card.dateLastActivity }}</td>
 
-            <!--<body>-->
-                <!--Description: {{card.desc}}-->
-            <!--</body>-->
-        <!--</li>-->
-    <!--</ul>-->
-<!--</div>-->
+                    <td style="width: 30%">
+                        Description: {{card.desc}}
+                    </td>
+                </tr>
+            </table>
+        </div>
 
+    </li>
 
-
-
-<div ng-controller="getCardsCtrl" style="border: solid">
-    <table style="border-collapse: collapse; border-spacing: 100px">
-        <tr ng-repeat="card in cardsOnList" style="border-bottom: solid">
-            <td style=""><button ng-click="openTab(card.url)"><b>{{card.name}}</b></button>
-
-            <td>
-                <li ng-repeat="label in card.labels">
-                <span ng-class="label.color"><b>Status: {{label.name}}</b></span>
-                </li>
-            </td>
-
-            <td><b>Last Active Date:</b>{{ card.dateLastActivity }}</td>
-
-            <td>
-            Description: {{card.desc}}
-            </td>
-
-            <td>
-                Description: {{card.desc}}
-            </td>
-        </tr>
-    </table>
 </div>
 
 
