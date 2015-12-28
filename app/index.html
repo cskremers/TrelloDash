@@ -35,30 +35,34 @@
 
 
 <div ng-controller="getListsCtrl">
-    <li ng-repeat="list in lists track by list.name">
+    <ul ng-repeat="list in lists track by list.name">
     <h3>{{list.name}}</h3>
 
         <div ng-controller="getCardsOnList" ng-init="init(list.id)" style="border: solid">
             <table style="border-collapse: collapse; border-spacing: 100px">
                 <tr ng-repeat="card in cards" style="border-bottom: solid">
-                    <td style=""><button ng-click="openTab(card.url)"><b>{{card.name}}</b></button>
+                    <td style="width: 15%"><button ng-click="openTab(card.url)"><b>{{card.name}}</b></button>
 
-                    <td style="width: 20% ">
+                    <td style="width: 10% ">
+                    <center>
                         <li ng-repeat="label in card.labels">
                             <span ng-class="label.color"><b>{{label.name}}</b></span>
                         </li>
+                    </center>
                     </td>
 
-                    <td style="width: 20%"><b>Last Active Date:</b>{{ card.dateLastActivity }}</td>
+                    <td style="width: 20%"ng-if="card.dateLastActivity < card.due" bgcolor="red"><b>Last Active Date:</b>{{ card.dateLastActivity }}</td>
 
-                    <td style="width: 30%">
+                    <td style="width: 40%">
                         Description: {{card.desc}}
+                    </td>
+                    <td style="width: 15%">
+                        Comments: {{card.badges.comments}}
                     </td>
                 </tr>
             </table>
         </div>
-
-    </li>
+    </ul>
 
 </div>
 
