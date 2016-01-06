@@ -51,9 +51,12 @@
                     </center>
                     </td>
 
-                    <td style="width: 20%"ng-if="card.dateLastActivity < card.due" bgcolor="red"><b>Last Active Date:</b>{{ card.dateLastActivity }}</td>
+                    <td style="width: 15%">
+                        <b>Last Active Date:</b>
+                        <br>{{ card.dateLastActivity }}
+                    </td>
 
-                    <td style="width: 40%">
+                    <td style="width: 45%">
                         Description: {{card.desc}}
                     </td>
                     <td style="width: 15%">
